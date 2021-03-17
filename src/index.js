@@ -6,9 +6,11 @@ import Clock from "./Clock";
 import BtnEvent from "./BtnEvent";
 import Toggle from "./Toggle";
 import Greeting from "./Greeting";
-import LoginControl from './LoginControl'
-import Page from './Page'
+import LoginControl from "./LoginControl";
+import Page from "./Page";
 import ListItems from "./ListItem";
+import NameForm from "./NameForm";
+import Reservation from './Reservation'
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -19,7 +21,9 @@ ReactDOM.render(
     {/* <Greeting /> */}
     {/* <LoginControl /> */}
     {/* <Page /> */}
-    <ListItems />,
+    {/* <ListItems />, */}
+    {/* <NameForm /> */}
+    <Reservation />
   </React.StrictMode>,
   document.getElementById("root")
 );
