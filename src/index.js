@@ -14,10 +14,12 @@ import ListItems from "./ListItem";
 import NameForm from "./NameForm";
 import Reservation from "./Reservation";
 import Calculator from "./Calculator";
+import BoilingWater from './BoilingWater'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />,{/* <Clock />, */}
+    {/* <App />, */}
+    {/* <Clock />, */}
     {/* <BtnEvent />, */}
     {/* <Toggle />, */}
     {/* <Greeting /> */}
@@ -26,7 +28,8 @@ ReactDOM.render(
     {/* <ListItems />, */}
     {/* <NameForm /> */}
     {/* <Reservation /> */}
-    <Calculator />
+    {/* <Calculator /> */}
+    <BoilingWater />
   </React.StrictMode>,
   document.getElementById("root")
 );
