@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
 import Clock from "./Clock";
 import BtnEvent from "./BtnEvent";
 import Toggle from "./Toggle";
@@ -10,8 +12,8 @@ import LoginControl from "./LoginControl";
 import Page from "./Page";
 import ListItems from "./ListItem";
 import NameForm from "./NameForm";
-import Reservation from './Reservation'
-import reportWebVitals from "./reportWebVitals";
+import Reservation from "./Reservation";
+import Calculator from "./Calculator";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,7 +25,8 @@ ReactDOM.render(
     {/* <Page /> */}
     {/* <ListItems />, */}
     {/* <NameForm /> */}
-    <Reservation />
+    {/* <Reservation /> */}
+    <Calculator />
   </React.StrictMode>,
   document.getElementById("root")
 );
