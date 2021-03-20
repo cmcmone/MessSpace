@@ -15,6 +15,7 @@ import NameForm from "./NameForm";
 import Reservation from "./Reservation";
 import Calculator from "./Calculator";
 import BoilingWater from './BoilingWater'
+import Composition from "./Composition";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,7 +30,8 @@ ReactDOM.render(
     {/* <NameForm /> */}
     {/* <Reservation /> */}
     {/* <Calculator /> */}
-    <BoilingWater />
+    {/* <BoilingWater /> */}
+    <Composition />
   </React.StrictMode>,
   document.getElementById("root")
 );
