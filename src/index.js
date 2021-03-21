@@ -4,34 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import Clock from "./Clock";
-import BtnEvent from "./BtnEvent";
-import Toggle from "./Toggle";
-import Greeting from "./Greeting";
-import LoginControl from "./LoginControl";
-import Page from "./Page";
-import ListItems from "./ListItem";
-import NameForm from "./NameForm";
-import Reservation from "./Reservation";
-import Calculator from "./Calculator";
-import BoilingWater from './BoilingWater'
-import Composition from "./Composition";
-
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App />, */}
-    {/* <Clock />, */}
-    {/* <BtnEvent />, */}
-    {/* <Toggle />, */}
-    {/* <Greeting /> */}
-    {/* <LoginControl /> */}
-    {/* <Page /> */}
-    {/* <ListItems />, */}
-    {/* <NameForm /> */}
-    {/* <Reservation /> */}
-    {/* <Calculator /> */}
-    {/* <BoilingWater /> */}
-    <Composition />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
