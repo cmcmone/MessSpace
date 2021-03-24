@@ -22,16 +22,40 @@ class AddTodo extends Component {
 }
 
 class TodoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { display: false };
+  }
+
   handleChange = (id) => {
     return () => {
       this.props.handleItemChange(id);
     };
   };
 
+  handleMouseEnter = () => {
+    this.setState({ display: true });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({ display: false });
+  };
+
+  handleDelButton = (id) => {
+    return () => {
+      this.props.deleteItem(id);
+      this.setState({ display: false });
+    };
+  };
+
   render() {
     const { id, name, done } = this.props;
+    const { display } = this.state;
     return (
-      <li>
+      <li
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <label>
           <input
             type="checkbox"
@@ -40,7 +64,11 @@ class TodoItem extends Component {
           />
           <span>{name}</span>
         </label>
-        <button className="btn btn-danger" style={{ display: "none" }}>
+        <button
+          className="btn btn-danger"
+          style={{ display: display ? "block" : "none" }}
+          onClick={this.handleDelButton(id)}
+        >
           Delete
         </button>
       </li>
@@ -51,6 +79,10 @@ class TodoItem extends Component {
 class TodoList extends Component {
   handleItemChange = (id) => {
     this.props.handleItemChange(id);
+  };
+
+  deleteItem = (id) => {
+    this.props.deleteItem(id);
   };
 
   render() {
@@ -65,6 +97,7 @@ class TodoList extends Component {
                 key={id}
                 {...element}
                 handleItemChange={this.handleItemChange}
+                deleteItem={this.deleteItem}
               />
             );
           })}
@@ -122,6 +155,14 @@ class App extends Component {
     this.setState({ todoList: newTodoList });
   };
 
+  deleteItem = (id) => {
+    const { todoList } = this.state;
+    const newTodoList = todoList.filter((item) => {
+      return item.id !== id;
+    });
+    this.setState({ todoList: newTodoList });
+  };
+
   render() {
     return (
       <div className="todo-container">
@@ -130,6 +171,7 @@ class App extends Component {
           <TodoList
             todoList={this.state.todoList}
             handleItemChange={this.handleItemChange}
+            deleteItem={this.deleteItem}
           />
           <TodoFooter />
         </div>
