@@ -22,53 +22,31 @@ class AddTodo extends Component {
 }
 
 class TodoItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { display: false };
-  }
-
   handleChange = (id) => {
     return () => {
       this.props.handleItemChange(id);
     };
   };
 
-  handleMouseEnter = () => {
-    this.setState({ display: true });
-  };
-
-  handleMouseLeave = () => {
-    this.setState({ display: false });
-  };
-
   handleDelButton = (id) => {
     return () => {
       this.props.deleteItem(id);
-      this.setState({ display: false });
     };
   };
 
   render() {
     const { id, name, done } = this.props;
-    const { display } = this.state;
     return (
-      <li
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
+      <li>
         <label>
           <input
             type="checkbox"
-            defaultChecked={done}
+            checked={done}
             onChange={this.handleChange(id)}
           />
           <span>{name}</span>
         </label>
-        <button
-          className="btn btn-danger"
-          style={{ display: display ? "block" : "none" }}
-          onClick={this.handleDelButton(id)}
-        >
+        <button className="btn btn-danger" onClick={this.handleDelButton(id)}>
           Delete
         </button>
       </li>
@@ -108,16 +86,31 @@ class TodoList extends Component {
 }
 
 class TodoFooter extends Component {
+  handleCheckAll = (event) => {
+    this.props.checkAllItem(event.target.checked);
+  };
+
+  handleDelete=() => {
+    this.props.deleteCompletedTodo();
+  }
+
   render() {
+    const { totalDone, length } = this.props;
     return (
       <div className="todo-footer">
         <label>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={this.handleCheckAll}
+            checked={totalDone === length && length > 0 ? true : false}
+          />
         </label>
         <span>
-          <span>Completed0</span> / All2
+          <span>Completed {totalDone}</span> / All {length}
         </span>
-        <button className="btn btn-danger">Clear All completed tasks</button>
+        <button className="btn btn-danger" onClick={this.handleDelete}>
+          Clear All completed tasks
+        </button>
       </div>
     );
   }
@@ -163,7 +156,27 @@ class App extends Component {
     this.setState({ todoList: newTodoList });
   };
 
+  checkAllItem = (checked) => {
+    const { todoList } = this.state;
+    const newTodoList = todoList.map((item) => {
+      return { ...item, done: checked };
+    });
+    this.setState({ todoList: newTodoList });
+  };
+
+  deleteCompletedTodo = () => {
+    const { todoList } = this.state;
+    const newTodoList = todoList.filter((item) => {
+      return item.done === false;
+    });
+    this.setState({ todoList : newTodoList });
+  }
+
   render() {
+    const { todoList } = this.state;
+    let totalDone = todoList.reduce((pre, item) => {
+      return pre + (item.done ? 1 : 0);
+    }, 0);
     return (
       <div className="todo-container">
         <div className="todo-wrap">
@@ -173,7 +186,12 @@ class App extends Component {
             handleItemChange={this.handleItemChange}
             deleteItem={this.deleteItem}
           />
-          <TodoFooter />
+          <TodoFooter
+            totalDone={totalDone}
+            length={todoList.length}
+            checkAllItem={this.checkAllItem}
+            deleteCompletedTodo={this.deleteCompletedTodo}
+          />
         </div>
       </div>
     );

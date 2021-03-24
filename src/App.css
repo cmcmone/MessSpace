@@ -65,8 +65,16 @@ body {
   padding: 0px;
 }
 
-.todo-main > li:hover {
+.todo-main li:hover {
   background-color: #ddd;
+}
+
+.todo-main li button {
+  display: none;
+}
+
+.todo-main li:hover button {
+  display: block;
 }
 
 .todo-empty {
