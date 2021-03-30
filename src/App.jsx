@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Example from './Example'
+import Example from './Example';
+import ExampleWithManyStates from './ExampleWithManyStates';
 
 import "./App.css";
 class App extends Component {
   render() {
-    return (
-      <Example />
-    );
+    return <Example />
+    // return <ExampleWithManyStates />;
   }
 }
 
