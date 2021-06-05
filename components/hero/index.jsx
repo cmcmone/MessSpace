@@ -17,7 +17,7 @@ const Hero = () => {
         <h1 className="text-5xl py-3">Roy Chen</h1>
         <p className="font-roboto text-xl">Full-Stack Web Developer</p>
         <p className="font-roboto text-lg pt-5">
-          <a href="/docs/resume.pdf" className="group">
+          <a href="/docs/Roy@Resume.pdf" className="group">
             <FontAwesomeIcon
               className="group-hover:animate-bounce"
               icon={faFileDownload}
