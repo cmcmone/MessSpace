@@ -4,7 +4,7 @@ const About = () => {
       <h1 className="text-4xl font-bold">About Me</h1>
       <hr />
       <section className="space-y-4 font-roboto text-base">
-        <h1>Hi there, I’m Roy!👋</h1>
+        <h1>Hi there, I’m Ray!👋</h1>
         <p>
           I'm a senior in computer science at Western Connecticut State
           University and will graduate in May. I'm looking for a
