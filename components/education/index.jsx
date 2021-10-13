@@ -10,7 +10,7 @@ const Education = () => {
         program={'Bachelor of Science - BS'}
         major={'Computer Science'}
         period={'Jan 2019 – May 2021'}
-        GPA={3.39}
+        GPA={3.52}
       />
       <EduItem
         schoolName={'Naugatuck Valley Community College'}
